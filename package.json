@@ -22,7 +22,8 @@
     "react-loading-skeleton": "^3.3.1",
     "react-text-modifier": "^1.0.0",
     "server-only": "^0.0.1",
-    "swiper": "^11.0.3"
+    "swiper": "^11.0.3",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

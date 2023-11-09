@@ -2,11 +2,12 @@
 
 import { afterLoginNavData, beforeLoginNavData } from "@/data/navData";
 import useAuth from "@/hooks/useAuth";
+import useCart from "@/hooks/useCart";
 import useTheme from "@/hooks/useTheme";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import NavLink from "./NavLink";
 
@@ -18,6 +19,12 @@ const Header = () => {
   const [navToggle, setNavToggle] = useState(false);
   const { replace } = useRouter();
   const path = usePathname();
+
+  const { cart } = useCart();
+  const total = useMemo(
+    () => cart.reduce((pre, cur) => cur.price * cur.quantity + pre, 0),
+    [cart]
+  );
 
   const handleLogout = async () => {
     const toastID = toast.loading("Logging out...");
@@ -82,7 +89,7 @@ const Header = () => {
                 />
               </svg>
               <span className="badge badge-sm indicator-item bg-primary">
-                1
+                {cart.length}
               </span>
             </div>
           </label>
@@ -91,10 +98,12 @@ const Header = () => {
             className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
-              <span className="font-bold text-lg">0 Items</span>
-              <span className="text-info">Subtotal: $0.00</span>
+              <span className="font-bold text-lg">{cart.length} Items</span>
+              <span className="text-info">Total: ${total.toFixed(2)}</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+                <Link href="/checkout" className="btn btn-primary btn-block">
+                  View cart
+                </Link>
               </div>
             </div>
           </div>
