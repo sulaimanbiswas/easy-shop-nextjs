@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "encoding": "^0.1.13",
     "firebase": "^10.5.2",
+    "jose": "^5.1.0",
     "mongodb": "^6.2.0",
     "next": "14.0.1",
     "react": "^18",

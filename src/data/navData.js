@@ -23,10 +23,6 @@ export const afterLoginNavData = [
     path: "/dashboard",
     name: "Dashboard",
   },
-  {
-    path: "/logout",
-    name: "Logout",
-  },
 ];
 
 export const beforeLoginNavData = [
