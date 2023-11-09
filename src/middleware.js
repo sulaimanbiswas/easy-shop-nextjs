@@ -25,5 +25,10 @@ export default middleware;
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/profile/:path*", "/dashboard/:path*"],
+  matcher: [
+    "/profile/:path*",
+    "/dashboard/:path*",
+    "/login/:path*",
+    "/signup/:path*",
+  ],
 };
